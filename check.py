@@ -1,12 +1,27 @@
+import logging
+from logging.handlers import RotatingFileHandler
 from dotenv import load_dotenv
+import datetime
+import logging
 import sqlite3
 import os
 
 load_dotenv()
 
 DB_PATH = os.getenv('DB_PATH')
+LOG_PATH = os.getenv('LOG_PATH')
 
-def check(date, time, status, msg):
+def log(msg):
+    logger = logging.getLogger("Rotating Log")
+    logger.setLevel(logging.INFO)
+    
+    handler = RotatingFileHandler(LOG_PATH, maxBytes=100000000, backupCount=5)
+
+    logger.addHandler(handler)
+    
+    logger.info(f'{str(datetime.datetime.now())} {msg}\n')
+
+def add(date, time, status, msg):
 
     if status == 'open':
         symbol = 'fa-solid fa-circle-check'
@@ -23,7 +38,7 @@ def check(date, time, status, msg):
 def get_status():
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
-    c.execute('SELECT * FROM History DESC LIMIT 1;')
+    c.execute('SELECT * FROM History ORDER BY id DESC LIMIT 1')
     results = c.fetchone()
     if results:
         return results
