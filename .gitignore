@@ -9,6 +9,7 @@ logs/*
 */logs
 
 # ignore db
+db
 db/*
 */db
 db/*.db
