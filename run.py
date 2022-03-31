@@ -37,6 +37,7 @@ def notify(msg):
         print(message.sid)
 
 while True:
+    check.log('Checking...')
     d = datetime.datetime.now().strftime("%d/%m/%Y")
     t = datetime.datetime.now().strftime("%H:%M:%S")
     if 'closed' in old_bridge.lower():
