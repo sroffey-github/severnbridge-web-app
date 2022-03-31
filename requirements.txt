@@ -1,4 +1,4 @@
 python-dotenv==0.19.2
 Flask==2.0.2
-bs4==0.0.1
+beautifulsoup4
 twilio==7.6.0
