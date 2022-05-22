@@ -1,4 +1,0 @@
-python-dotenv==0.19.2
-Flask==2.0.2
-beautifulsoup4
-twilio==7.6.0

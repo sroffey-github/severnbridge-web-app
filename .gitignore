@@ -7,6 +7,9 @@ __pycache__/
 logs/*
 *.log
 */logs
+**/*.log
+
+config.ini
 
 # ignore db
 db
